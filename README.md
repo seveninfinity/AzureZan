@@ -1,12 +1,11 @@
-##AzureZan - Windows Azure Mobile Table Interaction Zanity.
-
-##Azure Manager & Mogenerator templates
-**Azure Manager** - Wrapper to simplify interacting with the Windows Azure Mobile Services IOS SDK.
-**Mogenerator templates** - Modified to allow you interact with your Entities in a more Azure friendly way.
+##AzureZan - Windows Azure Mobile Services -Faster 
+**Azure Manager** - Wrapper to simplify interacting with the Windows Azure Mobile Services IOS SDK through interacting with the associated mogenerator generated NSManagedObject subclasses.
+**Mogenerator templates** - Modified to enable and extend interaction with your core data entities in a more Azure friendly way for the offline data, and sync features of the SDK.
+https://github.com/seveninfinity/AzureZan-mogenerator
 
 ----------
 
-##Why do i need this
+###Why do i need this
 The Azure Mobile Services IOS SDK's offline data feature, uses core data, but changes made directly to **NSManagedObject** will not be synced with the built in **Push & Pull** methods. The SDK is designed to record changes, and then transmit those changes. All changes to a NSManagedObject must go through the SDK. 
 
 A simpler way to look at this..
@@ -20,7 +19,7 @@ Mogenerator creates statically typed classes based on your core data entities. W
 > - Start Coding
 > 
 
-##Usage -Setup
+###Usage -Setup
 
 Launch Azure Manager singleton with the **App URL** and **Public Key** to your **mobile service**. This is available from the dashboard.
 ``` objc
@@ -29,10 +28,11 @@ Launch Azure Manager singleton with the **App URL** and **Public Key** to your *
 [AzureManager launchWithAppUrlString:@"" appKey:@""];
 ```
 
-##Usage -With MoGenerator Templates
+### Usage -With MoGenerator Templates
+https://github.com/seveninfinity/AzureZan-mogenerator
 Lets say we have a local Core Data entity called **Transactions**, with a table in Azure also called **Transactions**. **Using the modified mogenerator templates** we can create, update, delete, and sync our local database with the cloud database. 
 
-#### <i class="icon-refresh"></i> Push, Pull, Or Sync
+#### Push, Pull, Or Sync
 ``` objc
 [Transactions pushToCloud];
 [Transactions pushToCloudDone:^(NSError *error){ }];
@@ -45,7 +45,7 @@ Lets say we have a local Core Data entity called **Transactions**, with a table 
 
 ```
 
-#### <i class="icon-pencil"></i> Create
+#### Create
 ``` objc
 [Transactions createItem:@{ @"name" : @"john" } 
 	      completion:^(NSDictionary *item, NSError *error){
@@ -53,7 +53,7 @@ Lets say we have a local Core Data entity called **Transactions**, with a table 
 }];
 ```
 
-#### <i class="icon-file"></i> Read
+#### Read
 ``` objc
 // Local or Remote
 [Transactions readItemWithId:@"1234-1234-1234-1234" 
@@ -69,7 +69,7 @@ transaction.name;
 NSArray *items = [Transactions allLocalRecords];
 ```
 
-#### <i class="icon-pencil"></i> Update
+#### Update
 ``` objc
 // Class Method
 [Transaction updateWithDictionary:@{ @"id" : @"", @"name" : @"john"} 
@@ -84,7 +84,7 @@ completion:^(NSError *error) {
 }];
 ```
 
-#### <i class="icon-trash"></i>  Delete
+####  Delete
 ``` objc
 // Class Method
 [Transactions deleteItem:@{@"id" : @"1234-1234-1234-1234"} 
@@ -97,7 +97,7 @@ completion:^(NSError *error) {
 }];
 ```
 
-**Utilities**
+#### Utilities
 ``` objc
 // Convert to NSDictionary
 NSDictionary *item = [transaction dictionaryRepresentation];
@@ -106,7 +106,7 @@ NSDictionary *item = [transaction dictionaryRepresentation];
 NSArray *properties = [transaction properties];
 ```
 
-**Access to underlying Windows Azure Mobile Services SDK**
+#### Access to underlying Windows Azure Mobile Services SDK
 ``` objc
 // Associated MSSyncTable instance
 MSSyncTable *syncTable = [Transaction azureSyncTable];
@@ -121,7 +121,7 @@ MSClient *tablesClient = [Transaction azureClient];
 MSSyncContext *syncContext = [Transaction azureSyncContext];
 ```
 
-##Azure Manager
+### Azure Manager
 **Azure Manager** replaces the need to create a custom service class to handle common interactions with MSSyncTable, MSClient, MSTable, MSCoreDataStore by creating these on-demand, or returning an existing instance we eliminate the need for this additional code. By using the custom mogenerator templates you will rarely have to deal with this class directly.
 ``` objc
 // MSSyncTable
@@ -140,7 +140,7 @@ MSSyncTable *syncTable = [AzureManager tableForTableNamed:@"TableName"];
 [syncTable delete:@{} completion:nil];
 ```
 
-##Custom Templates & Mogenerator
+### Custom Templates & Mogenerator
 This is just a quick guide, a more in-depth guide by John Blanco is available here http://raptureinvenice.com/getting-started-with-mogenerator/
 
 > **Install MoGenerator Templates:**
