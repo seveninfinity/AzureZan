@@ -23,16 +23,19 @@
 /* Begin PBXBuildFile section */
 		41C205A91BF9623A00266327 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 41C205A81BF9623A00266327 /* main.m */; };
 		41C205AC1BF9623A00266327 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 41C205AB1BF9623A00266327 /* AppDelegate.m */; };
-		41C205AF1BF9623A00266327 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41C205AE1BF9623A00266327 /* ViewController.m */; };
 		41C205B21BF9623A00266327 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41C205B01BF9623A00266327 /* Main.storyboard */; };
 		41C205B51BF9623A00266327 /* ZanTodo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 41C205B31BF9623A00266327 /* ZanTodo.xcdatamodeld */; };
 		41C205B71BF9623A00266327 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41C205B61BF9623A00266327 /* Assets.xcassets */; };
 		41C205BA1BF9623A00266327 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41C205B81BF9623A00266327 /* LaunchScreen.storyboard */; };
 		41C205C51BF9623A00266327 /* ZanTodoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 41C205C41BF9623A00266327 /* ZanTodoTests.m */; };
 		41C205D01BF9623A00266327 /* ZanTodoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 41C205CF1BF9623A00266327 /* ZanTodoUITests.m */; };
-		41C205E91BF9634300266327 /* AzureManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 41C205E21BF9634300266327 /* AzureManager.m */; };
-		41C205EA1BF9634300266327 /* NSMutableDictionary+SafeSetter.m in Sources */ = {isa = PBXBuildFile; fileRef = 41C205E61BF9634300266327 /* NSMutableDictionary+SafeSetter.m */; };
-		41C205EC1BF963C100266327 /* WindowsAzureMobileServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41C205EB1BF963C100266327 /* WindowsAzureMobileServices.framework */; };
+		41F72F941BFA5B20006B9EA2 /* WindowsAzureMobileServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41F72F931BFA5B20006B9EA2 /* WindowsAzureMobileServices.framework */; };
+		41F72F9F1BFA5BC6006B9EA2 /* AzureManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 41F72F981BFA5BC6006B9EA2 /* AzureManager.m */; };
+		41F72FA01BFA5BC6006B9EA2 /* NSMutableDictionary+SafeSetter.m in Sources */ = {isa = PBXBuildFile; fileRef = 41F72F9C1BFA5BC6006B9EA2 /* NSMutableDictionary+SafeSetter.m */; };
+		41F72FAA1BFA6263006B9EA2 /* _TodoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 41F72FA71BFA6263006B9EA2 /* _TodoItem.m */; };
+		41F72FAB1BFA6263006B9EA2 /* TodoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 41F72FA91BFA6263006B9EA2 /* TodoItem.m */; };
+		41F72FB11BFA62B0006B9EA2 /* QSTodoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41F72FAE1BFA62B0006B9EA2 /* QSTodoListViewController.m */; };
+		41F72FB51BFA6629006B9EA2 /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 41F72FB41BFA6629006B9EA2 /* BaseModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,8 +60,6 @@
 		41C205A81BF9623A00266327 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		41C205AA1BF9623A00266327 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		41C205AB1BF9623A00266327 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		41C205AD1BF9623A00266327 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		41C205AE1BF9623A00266327 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		41C205B11BF9623A00266327 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		41C205B41BF9623A00266327 /* ZanTodo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ZanTodo.xcdatamodel; sourceTree = "<group>"; };
 		41C205B61BF9623A00266327 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -70,13 +71,24 @@
 		41C205CB1BF9623A00266327 /* ZanTodoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZanTodoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		41C205CF1BF9623A00266327 /* ZanTodoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZanTodoUITests.m; sourceTree = "<group>"; };
 		41C205D11BF9623A00266327 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		41C205E11BF9634300266327 /* AzureManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AzureManager.h; sourceTree = "<group>"; };
-		41C205E21BF9634300266327 /* AzureManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AzureManager.m; sourceTree = "<group>"; };
-		41C205E31BF9634300266327 /* AzureZan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AzureZan.h; path = ../../../lib/AzureZan.h; sourceTree = "<group>"; };
-		41C205E51BF9634300266327 /* NSMutableDictionary+SafeSetter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+SafeSetter.h"; sourceTree = "<group>"; };
-		41C205E61BF9634300266327 /* NSMutableDictionary+SafeSetter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+SafeSetter.m"; sourceTree = "<group>"; };
-		41C205E81BF9634300266327 /* MSCoreDataStore_DataStoreExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSCoreDataStore_DataStoreExtensions.h; sourceTree = "<group>"; };
-		41C205EB1BF963C100266327 /* WindowsAzureMobileServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WindowsAzureMobileServices.framework; path = ../../../WindowsAzureMobileServices.framework; sourceTree = "<group>"; };
+		41F72F931BFA5B20006B9EA2 /* WindowsAzureMobileServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WindowsAzureMobileServices.framework; sourceTree = "<group>"; };
+		41F72F971BFA5BC6006B9EA2 /* AzureManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AzureManager.h; sourceTree = "<group>"; };
+		41F72F981BFA5BC6006B9EA2 /* AzureManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AzureManager.m; sourceTree = "<group>"; };
+		41F72F991BFA5BC6006B9EA2 /* AzureZan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AzureZan.h; sourceTree = "<group>"; };
+		41F72F9B1BFA5BC6006B9EA2 /* NSMutableDictionary+SafeSetter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+SafeSetter.h"; sourceTree = "<group>"; };
+		41F72F9C1BFA5BC6006B9EA2 /* NSMutableDictionary+SafeSetter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+SafeSetter.m"; sourceTree = "<group>"; };
+		41F72F9E1BFA5BC6006B9EA2 /* MSCoreDataStore_DataStoreExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSCoreDataStore_DataStoreExtensions.h; sourceTree = "<group>"; };
+		41F72FA61BFA6263006B9EA2 /* _TodoItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _TodoItem.h; sourceTree = "<group>"; };
+		41F72FA71BFA6263006B9EA2 /* _TodoItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _TodoItem.m; sourceTree = "<group>"; };
+		41F72FA81BFA6263006B9EA2 /* TodoItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodoItem.h; sourceTree = "<group>"; };
+		41F72FA91BFA6263006B9EA2 /* TodoItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodoItem.m; sourceTree = "<group>"; };
+		41F72FAD1BFA62B0006B9EA2 /* QSTodoListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSTodoListViewController.h; sourceTree = "<group>"; };
+		41F72FAE1BFA62B0006B9EA2 /* QSTodoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSTodoListViewController.m; sourceTree = "<group>"; };
+		41F72FB31BFA6629006B9EA2 /* BaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
+		41F72FB41BFA6629006B9EA2 /* BaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
+		41F72FB61BFA7812006B9EA2 /* ReadMe.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = ReadMe.txt; sourceTree = "<group>"; };
+		41F72FB71BFA7C1B006B9EA2 /* AzureZan.webloc */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = AzureZan.webloc; sourceTree = "<group>"; };
+		41F72FB81BFA7C1B006B9EA2 /* AzureZan-mogenerator.webloc */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "AzureZan-mogenerator.webloc"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,7 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				41C205EC1BF963C100266327 /* WindowsAzureMobileServices.framework in Frameworks */,
+				41F72F941BFA5B20006B9EA2 /* WindowsAzureMobileServices.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,7 +141,10 @@
 		41C205A61BF9623A00266327 /* ZanTodo */ = {
 			isa = PBXGroup;
 			children = (
-				41C205DD1BF962BA00266327 /* AzureZan */,
+				41F72FB61BFA7812006B9EA2 /* ReadMe.txt */,
+				41F72FB71BFA7C1B006B9EA2 /* AzureZan.webloc */,
+				41F72FB81BFA7C1B006B9EA2 /* AzureZan-mogenerator.webloc */,
+				41F72F951BFA5BC6006B9EA2 /* lib */,
 				41C205DE1BF962D600266327 /* Example */,
 				41C205A71BF9623A00266327 /* Supporting Files */,
 			);
@@ -139,6 +154,10 @@
 		41C205A71BF9623A00266327 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				41C205B01BF9623A00266327 /* Main.storyboard */,
+				41C205B61BF9623A00266327 /* Assets.xcassets */,
+				41C205B81BF9623A00266327 /* LaunchScreen.storyboard */,
+				41C205BB1BF9623A00266327 /* Info.plist */,
 				41C205A81BF9623A00266327 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -162,76 +181,84 @@
 			path = ZanTodoUITests;
 			sourceTree = "<group>";
 		};
-		41C205DD1BF962BA00266327 /* AzureZan */ = {
-			isa = PBXGroup;
-			children = (
-				41C205E01BF9634300266327 /* azuremanager */,
-				41C205E31BF9634300266327 /* AzureZan.h */,
-				41C205E41BF9634300266327 /* categories */,
-				41C205E71BF9634300266327 /* extensions */,
-			);
-			name = AzureZan;
-			sourceTree = "<group>";
-		};
 		41C205DE1BF962D600266327 /* Example */ = {
 			isa = PBXGroup;
 			children = (
-				41C205DF1BF9631C00266327 /* Model */,
 				41C205AA1BF9623A00266327 /* AppDelegate.h */,
 				41C205AB1BF9623A00266327 /* AppDelegate.m */,
-				41C205AD1BF9623A00266327 /* ViewController.h */,
-				41C205AE1BF9623A00266327 /* ViewController.m */,
-				41C205B01BF9623A00266327 /* Main.storyboard */,
-				41C205B61BF9623A00266327 /* Assets.xcassets */,
-				41C205B81BF9623A00266327 /* LaunchScreen.storyboard */,
-				41C205BB1BF9623A00266327 /* Info.plist */,
 				41C205B31BF9623A00266327 /* ZanTodo.xcdatamodeld */,
+				41F72FA51BFA6263006B9EA2 /* Model */,
+				41F72FAC1BFA62B0006B9EA2 /* Controllers */,
 			);
 			name = Example;
-			sourceTree = "<group>";
-		};
-		41C205DF1BF9631C00266327 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		41C205E01BF9634300266327 /* azuremanager */ = {
-			isa = PBXGroup;
-			children = (
-				41C205E11BF9634300266327 /* AzureManager.h */,
-				41C205E21BF9634300266327 /* AzureManager.m */,
-			);
-			name = azuremanager;
-			path = ../../../lib/azuremanager;
-			sourceTree = "<group>";
-		};
-		41C205E41BF9634300266327 /* categories */ = {
-			isa = PBXGroup;
-			children = (
-				41C205E51BF9634300266327 /* NSMutableDictionary+SafeSetter.h */,
-				41C205E61BF9634300266327 /* NSMutableDictionary+SafeSetter.m */,
-			);
-			name = categories;
-			path = ../../../lib/categories;
-			sourceTree = "<group>";
-		};
-		41C205E71BF9634300266327 /* extensions */ = {
-			isa = PBXGroup;
-			children = (
-				41C205E81BF9634300266327 /* MSCoreDataStore_DataStoreExtensions.h */,
-			);
-			name = extensions;
-			path = ../../../lib/extensions;
 			sourceTree = "<group>";
 		};
 		41C205F21BF99A2900266327 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				41C205EB1BF963C100266327 /* WindowsAzureMobileServices.framework */,
+				41F72F931BFA5B20006B9EA2 /* WindowsAzureMobileServices.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		41F72F951BFA5BC6006B9EA2 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				41F72F961BFA5BC6006B9EA2 /* azuremanager */,
+				41F72F991BFA5BC6006B9EA2 /* AzureZan.h */,
+				41F72F9A1BFA5BC6006B9EA2 /* categories */,
+				41F72F9D1BFA5BC6006B9EA2 /* extensions */,
+			);
+			name = lib;
+			path = ../../../lib;
+			sourceTree = "<group>";
+		};
+		41F72F961BFA5BC6006B9EA2 /* azuremanager */ = {
+			isa = PBXGroup;
+			children = (
+				41F72F971BFA5BC6006B9EA2 /* AzureManager.h */,
+				41F72F981BFA5BC6006B9EA2 /* AzureManager.m */,
+			);
+			path = azuremanager;
+			sourceTree = "<group>";
+		};
+		41F72F9A1BFA5BC6006B9EA2 /* categories */ = {
+			isa = PBXGroup;
+			children = (
+				41F72F9B1BFA5BC6006B9EA2 /* NSMutableDictionary+SafeSetter.h */,
+				41F72F9C1BFA5BC6006B9EA2 /* NSMutableDictionary+SafeSetter.m */,
+			);
+			path = categories;
+			sourceTree = "<group>";
+		};
+		41F72F9D1BFA5BC6006B9EA2 /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+				41F72F9E1BFA5BC6006B9EA2 /* MSCoreDataStore_DataStoreExtensions.h */,
+			);
+			path = extensions;
+			sourceTree = "<group>";
+		};
+		41F72FA51BFA6263006B9EA2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				41F72FB31BFA6629006B9EA2 /* BaseModel.h */,
+				41F72FB41BFA6629006B9EA2 /* BaseModel.m */,
+				41F72FA61BFA6263006B9EA2 /* _TodoItem.h */,
+				41F72FA71BFA6263006B9EA2 /* _TodoItem.m */,
+				41F72FA81BFA6263006B9EA2 /* TodoItem.h */,
+				41F72FA91BFA6263006B9EA2 /* TodoItem.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		41F72FAC1BFA62B0006B9EA2 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				41F72FAD1BFA62B0006B9EA2 /* QSTodoListViewController.h */,
+				41F72FAE1BFA62B0006B9EA2 /* QSTodoListViewController.m */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -375,7 +402,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "mogenerator -m ${PROJECT_NAME}/${PROJECT_NAME}.xcdatamodeld -H ${PROJECT_NAME}/Model --template-var arc=true --template-path /../motemplates";
+			shellScript = "mogenerator -m ${PROJECT_NAME}/${PROJECT_NAME}.xcdatamodeld -H ${PROJECT_NAME}/Model -M ${PROJECT_NAME}/Model --template-var arc=true --template-path \"/Path/To/Where Ever/You/Put/The/Templates/AzureZan-mogenerator\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -384,12 +411,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				41C205AF1BF9623A00266327 /* ViewController.m in Sources */,
+				41F72FAA1BFA6263006B9EA2 /* _TodoItem.m in Sources */,
+				41F72FAB1BFA6263006B9EA2 /* TodoItem.m in Sources */,
+				41F72FB11BFA62B0006B9EA2 /* QSTodoListViewController.m in Sources */,
 				41C205AC1BF9623A00266327 /* AppDelegate.m in Sources */,
-				41C205EA1BF9634300266327 /* NSMutableDictionary+SafeSetter.m in Sources */,
+				41F72FA01BFA5BC6006B9EA2 /* NSMutableDictionary+SafeSetter.m in Sources */,
 				41C205A91BF9623A00266327 /* main.m in Sources */,
 				41C205B51BF9623A00266327 /* ZanTodo.xcdatamodeld in Sources */,
-				41C205E91BF9634300266327 /* AzureManager.m in Sources */,
+				41F72FB51BFA6629006B9EA2 /* BaseModel.m in Sources */,
+				41F72F9F1BFA5BC6006B9EA2 /* AzureManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -528,9 +558,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = ZanTodo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.seveninfinity.ZanTodo;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.yourname.ZanTodo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -539,9 +577,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = ZanTodo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.seveninfinity.ZanTodo;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.yourname.ZanTodo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -627,6 +673,7 @@
 				41C205D61BF9623A00266327 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		41C205D71BF9623A00266327 /* Build configuration list for PBXNativeTarget "ZanTodoTests" */ = {
 			isa = XCConfigurationList;
@@ -635,6 +682,7 @@
 				41C205D91BF9623A00266327 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		41C205DA1BF9623A00266327 /* Build configuration list for PBXNativeTarget "ZanTodoUITests" */ = {
 			isa = XCConfigurationList;
@@ -643,6 +691,7 @@
 				41C205DC1BF9623A00266327 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		41C205EE1BF9641900266327 /* Build configuration list for PBXAggregateTarget "mogenerator" */ = {
 			isa = XCConfigurationList;
@@ -651,6 +700,7 @@
 				41C205F01BF9641900266327 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

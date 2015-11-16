@@ -1,72 +1,77 @@
 ##AzureZan - Windows Azure Mobile Services -Faster 
 **Azure Manager** - Wrapper to simplify interacting with the Windows Azure Mobile Services IOS SDK through interacting with the associated mogenerator generated NSManagedObject subclasses.
 **Mogenerator templates** - Modified to enable and extend interaction with your core data entities in a more Azure friendly way for the offline data, and sync features of the SDK.
-https://github.com/seveninfinity/AzureZan-mogenerator
+[AzureZan-mogenerator](https://github.com/seveninfinity/AzureZan-mogenerator)
 
 ----------
 
 ###Why do i need this
 The Azure Mobile Services IOS SDK's offline data feature, uses core data, but changes made directly to **NSManagedObject** will not be synced with the built in **Push & Pull** methods. The SDK is designed to record changes, and then transmit those changes. All changes to a NSManagedObject must go through the SDK. 
 
-A simpler way to look at this..
-**Get Records:** Standard core data
-**Change Records:** Create, update, delete operations performed using the SDK 
+> - **Get Records:**  Standard core data, fetch, sort, same as any core data project.
+> - **Change or Create:** All changes, updates, deletions are made with a dictionary representation, and performed using the SDK. Changes made directly to the NSManagedObject are not synced.
 
-**Mogenerator to the rescue**
-Mogenerator creates statically typed classes based on your core data entities. With additions that cater to the SDK's design, and interact with Azure Manager to simplify basic C-R-U-D, Push, Pull, and sync operations. The result is a implementation process that looks like this.
-> - Create matching azure table and core data entity with the same name
-> - Generate classes using mogenerator
+
+**Mogenerator [custom templates](https://github.com/seveninfinity/AzureZan-mogenerator) to the rescue**
+[Mogenerator](https://rentzsch.github.io/mogenerator/) creates statically typed classes based on your core data entities (...I know lame description). With additions that cater to the SDK's design, and interact with Azure Manager to simplify basic C-R-U-D, Push, Pull, and sync operations. The result is a implementation process that looks like this.
+> - Create matching **azure table** and **core data entity** with the same name
+> - Generate statically types NSManagedObject subClasses using mogenerator
 > - Start Coding
 > 
 
 ###Usage -Setup
 
 Launch Azure Manager singleton with the **App URL** and **Public Key** to your **mobile service**. This is available from the dashboard.
+
+AppDelegate.h
 ``` objc
 #import "AzureZan.h"
 
-[AzureManager launchWithAppUrlString:@"" appKey:@""];
+[AzureManager launchWithAppUrlString:@"App_Url" 
+                              appKey:@"App_Key"];
 ```
 
-### Usage -With MoGenerator Templates
-https://github.com/seveninfinity/AzureZan-mogenerator
-Lets say we have a local Core Data entity called **Transactions**, with a table in Azure also called **Transactions**. **Using the modified mogenerator templates** we can create, update, delete, and sync our local database with the cloud database. 
+### Usage -With Custom MoGenerator [Templates](https://github.com/seveninfinity/AzureZan-mogenerator)
+Lets say we have a local Core Data entity called **TodoItems**, with a table in Azure also called **TodoItems**. **Using the custom mogenerator templates** we can create, update, and delete items locally, and sync the changes back to the mobile service in the cloud. The code to create and manage instances of MSSyncTable & MSClient are handled by AzureManager, and auto-magically generated with the custom mogenerator templates.
 
 #### Push, Pull, Or Sync
 ``` objc
-[Transactions pushToCloud];
-[Transactions pushToCloudDone:^(NSError *error){ }];
+[TodoItems pushToCloud];
+[TodoItems pushToCloudCompletion:^(NSError *error){ }];
 
-[Transactions pullFromCloud];
-[Transactions pullFromCloudDone:^(NSError *error){ }];
+[TodoItems pullFromCloud];
+[TodoItems pullFromCloudCompletion:^(NSError *error){ }];
 
-[Transactions pushAndpullFromCloud];
-[Transactions pushAndpullFromCloudDone:^(NSError *error){ }];
+[TodoItems sync];
+[TodoItems syncCompletion:^(NSError *error){ }];
 
 ```
 
 #### Create
 ``` objc
-[Transactions createItem:@{ @"name" : @"john" } 
+[TodoItems createItem:@{ @"name" : @"john" } 
 	      completion:^(NSDictionary *item, NSError *error){
-	//..
+	// Azure GUID (Azure Id != core data Id)
+	item[@"id"];
+	
+	TodoItems *todoItem = [TodoItems managedObjectWithAzureItemId:item[@"id"]];
 }];
 ```
 
 #### Read
 ``` objc
 // Local or Remote
-[Transactions readItemWithId:@"1234-1234-1234-1234" 
+[TodoItems readItemWithId:@"1234-1234-1234-1234" 
 	          completion:^(NSDictionary *item, NSError *error){
-	//.. item[@"name"]
+	//.. 
 }];
 
 // Locally stored NSManagedObject subclass
-Transactions *transaction = [Transactions managedObjectWithAzureItemId:@""];
-transaction.name;
+TodoItems *todoItem = [TodoItems managedObjectWithAzureItemId:@""];
+todoItem.name; // Typed access
 
 // or just need a simple array of dictionaries for all locally stored records
-NSArray *items = [Transactions allLocalRecords];
+NSArray *items = [TodoItems allLocalRecords];
 ```
 
 #### Update
@@ -78,7 +83,7 @@ NSArray *items = [Transactions allLocalRecords];
 }];
 
 // Instance Method
-[transaction updateWithDictionary:@{ @"name" : @"john" } 
+[todoItem updateWithDictionary:@{ @"name" : @"john" } 
 completion:^(NSError *error) {
         
 }];
@@ -87,12 +92,12 @@ completion:^(NSError *error) {
 ####  Delete
 ``` objc
 // Class Method
-[Transactions deleteItem:@{@"id" : @"1234-1234-1234-1234"} 
+[TodoItems deleteItem:@{@"id" : @"1234-1234-1234-1234"} 
               completion:^(NSError *error) {
     
 }];
 // Instance Method
-[transaction deleteWithCompletion:^(NSError *error) {
+[todoItem deleteWithCompletion:^(NSError *error) {
     
 }];
 ```
@@ -100,13 +105,18 @@ completion:^(NSError *error) {
 #### Utilities
 ``` objc
 // Convert to NSDictionary
-NSDictionary *item = [transaction dictionaryRepresentation];
+NSDictionary *item = [todoItem dictionaryRepresentation];
 
 // All statically types properties
-NSArray *properties = [transaction properties];
+NSArray *properties = [todoItem properties];
+
+// This can also be achieved from the NSManagedObject, 
+// I just find the above method cleaner, and readible
+[[[todoItem entity] attributesByName] allKeys];
 ```
 
 #### Access to underlying Windows Azure Mobile Services SDK
+In case you want quick finer grained access to the object instances created/configured/managed by Azure Manager.
 ``` objc
 // Associated MSSyncTable instance
 MSSyncTable *syncTable = [Transaction azureSyncTable];
@@ -119,6 +129,9 @@ MSClient *tablesClient = [Transaction azureClient];
 
 // Associated MSSyncContext instance
 MSSyncContext *syncContext = [Transaction azureSyncContext];
+MSSyncContext *syncContext = tablesClient.syncContext;
+MSSyncContext *syncContext = syncTable.client.syncContext;
+
 ```
 
 ### Azure Manager
@@ -146,20 +159,26 @@ This is just a quick guide, a more in-depth guide by John Blanco is available he
 > **Install MoGenerator Templates:**
 > 
 > - Install mogenerator http://rentzsch.github.com/mogenerator/
-> - Copy custom mogenerator templates to a location of your choosing
-> - Open XCode -> Select Project Name 
-> - Press + under targets
-> - Select Other -> Aggregate -> Name it "mogenerator"
-> - Select  your newly created target
-> - Add "new run script phase"
-> - Modify the script below with your custom location
-> - Build to the new Aggregate target
-> - Copy the files generated into your project
+> - Clone [AzureZan-mogenerator](https://github.com/seveninfinity/AzureZan-mogenerator) templates
+> - From build targets -> Add new target (+) 
+> - Select Other -> Aggregate -> Name it "mogenerator" or "Bob"
+> - Add "new run script phase" to the new build target
+> - Modify the script below with the mogenerator templates location
+> - Build the Aggregate target
+> - Add the files generated into your project
 > 
 
 ```
 mogenerator -m ${PROJECT_NAME}/${PROJECT_NAME}.xcdatamodeld 
 -H ${PROJECT_NAME}/Model 
 --template-var arc=true 
---template-path /Path/To/Where/Ever/You/Put/The/Templates
+--template-path "/Path/To/Where Ever/You/Put/The/Templates"
 ```
+
+Links
+[Mogenerator](https://rentzsch.github.io/mogenerator/)
+[Mogenerator Default Features](http://stackoverflow.com/questions/22566121/what-features-does-mogenerator-provide)
+[Get Started With Mogenerator](http://raptureinvenice.com/getting-started-with-mogenerator/)
+
+Author
+[Brian Nelson](https://www.linkedin.com/in/nelson79) - Not to be confused with the | 29 other programmers of the same name | 3k linked-in profiles | 375k google results. 

@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "AzureZan.h"
 
 @interface AppDelegate ()
 
@@ -16,6 +17,13 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    // REPLACE the app url & app key from your Azure Mobile Service
+    // These can be found in the dashboard screen of your windows azure mobile service portal
+    // Without this offline will still work
+    [AzureManager launchWithAppUrlString:@"Your_Mobile_Services_App_Url"
+                                  appKey:@"Your_Mobile_Services_App_Key"];
+    
     // Override point for customization after application launch.
     return YES;
 }

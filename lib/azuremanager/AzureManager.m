@@ -8,9 +8,7 @@
 
 
 #import "AzureManager.h"
-
 #import "AppDelegate.h"
-#import <ObjectiveSugar.h>
 
 @interface AzureManager()
 @property(nonatomic, strong) NSMutableDictionary *services;
@@ -80,7 +78,8 @@
 }
 - (MSQuery *)existingOrNewQueryForTableWithName:(NSString *)tableName{
 
-    if ([(NSDictionary *)self.querys hasKey:tableName]) {
+    
+    if (!!self.querys[tableName]) {
         return _querys[tableName];
     }
     
@@ -113,7 +112,7 @@
     NSString *tableAsAzureName = tableName;
     
     // Return Existing Service
-    if ([(NSDictionary *)self.services hasKey:tableAsAzureName]) {
+    if (!!self.services[tableAsAzureName]) {
         return _services[tableAsAzureName];
     }
     
@@ -136,7 +135,7 @@
 }
 - (MSClient *)existingOrNewClientForTableWithName:(NSString *)tableName {
     
-    if ([(NSDictionary *)self.clients hasKey:tableName]) {
+    if (!!self.clients[tableName]) {
         
         MSClient *client = self.clients[tableName];
 //        if (!client.currentUser) {
