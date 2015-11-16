@@ -108,11 +108,11 @@
 		41C2059B1BF9623900266327 = {
 			isa = PBXGroup;
 			children = (
-				41C205EB1BF963C100266327 /* WindowsAzureMobileServices.framework */,
 				41C205A61BF9623A00266327 /* ZanTodo */,
 				41C205C31BF9623A00266327 /* ZanTodoTests */,
 				41C205CE1BF9623A00266327 /* ZanTodoUITests */,
 				41C205A51BF9623A00266327 /* Products */,
+				41C205F21BF99A2900266327 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -224,6 +224,14 @@
 			);
 			name = extensions;
 			path = ../../../lib/extensions;
+			sourceTree = "<group>";
+		};
+		41C205F21BF99A2900266327 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				41C205EB1BF963C100266327 /* WindowsAzureMobileServices.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
